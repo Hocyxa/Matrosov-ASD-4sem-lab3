@@ -52,13 +52,13 @@ public:
 		int Index_Source = Index(Source);
 		int Index_Dest = Index(Dest);
 		if (Index_Source == -1 || Index_Dest == -1) throw "Edge not exist";
-		for (size_t i = 0; i < table[Index_Source].dest[i].size(); i++)
+		for (size_t i = 0; i < table[Index_Source].dest.size(); i++)
 		{
-			if (table[Index_Source].dest[i].dest == Dest)
+			if (table[Index_Source].dest[i].dest + 1  == Dest)
 			{
 				for (size_t j = i; j < table[Index_Source].dest.size() - 1; j++)
 				{
-					table[Index_Source].dest[i] = table[Index_Source].dest[i + 1];
+					table[Index_Source].dest[j] = table[Index_Source].dest[j + 1];
 				}
 				table[Index_Source].dest.pop_back();
 			}
