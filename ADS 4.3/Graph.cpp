@@ -61,6 +61,7 @@ public:
 					table[Index_Source].dest[j] = table[Index_Source].dest[j + 1];
 				}
 				table[Index_Source].dest.pop_back();
+				return;
 			}
 		}
 	}

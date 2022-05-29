@@ -15,7 +15,7 @@ int main()
 	T.Add_Edge(1, 3, 15);
 	T.Add_Edge(1, 4, 52);
 
-	T.Delete_Edge(1, 2);
+	T.Delete_Edge(1, 3);
 
 
 	T.Print();
