@@ -54,7 +54,7 @@ public:
 		if (Index_Source == -1 || Index_Dest == -1) throw "Edge not exist";
 		for (size_t i = 0; i < table[Index_Source].dest.size(); i++)
 		{
-			if (table[Index_Source].dest[i].dest + 1  == Dest)
+			if (table[Index_Source].dest[i].dest + 1  == Dest) //?????
 			{
 				for (size_t j = i; j < table[Index_Source].dest.size() - 1; j++)
 				{
@@ -65,6 +65,37 @@ public:
 			}
 		}
 	}
+	void Delete_Vertex(TVertex Source)
+	{
+		int Index_Source = Index(Source);
+		if (Index_Source == -1) throw "Vertex not exist";
+		for (size_t i = 0; i < table.size(); i++) 
+		{
+			if (i != Index_Source)
+			{
+				for (size_t j = 0; j < table[i].dest.size(); j++)
+				{
+					if (table[i].dest[j].dest == Index_Source)
+					{
+						for (size_t k = j; k < table[i].dest.size() - 1; k++)
+						{
+							table[i].dest[k].dest = table[i].dest[k + 1].dest;
+						}
+						table[i].dest.pop_back();
+					}
+				}
+			}
+		}
+
+
+		for (size_t i = Index_Source; i < table.size() - 1; i++)
+		{
+			table[i] = table[i + 1];
+			table[i].id--;
+		}
+		table.pop_back();
+	}
+
 	void Print()
 	{
 		for (size_t i = 0; i < table.size(); i++)

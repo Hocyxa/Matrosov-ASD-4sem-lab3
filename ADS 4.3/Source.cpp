@@ -11,12 +11,17 @@ int main()
 	T.Add_Vertex(3);
 	T.Add_Vertex(4);
 	T.Add_Vertex(5);
-	T.Add_Edge(1, 2, 5);
-	T.Add_Edge(1, 3, 15);
-	T.Add_Edge(1, 4, 52);
+	T.Add_Edge(1, 2, 05);
+	T.Add_Edge(2, 3, 15);
+	T.Add_Edge(3, 4, 25);
+	T.Add_Edge(1, 4, 35);
+	T.Add_Edge(3, 1, 45);
+	T.Add_Edge(3, 5, 55);
 
-	T.Delete_Edge(1, 3);
+	T.Print();
 
+	T.Delete_Vertex(3);
+	std::cout << std::endl;
 
 	T.Print();
 	return 0;
