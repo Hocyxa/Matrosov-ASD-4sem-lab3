@@ -153,7 +153,7 @@ public:
 		std::vector<double> d(table.size());
 		for (size_t i = 0; i < table.size(); i++)
 		{
-			d[i] = 10000000000;
+			d[i] = INFINITY;
 		}
 		d[Index(source)] = 0;
 		std::vector<std::vector<TVertex>> ways(table.size());
@@ -179,7 +179,7 @@ public:
 		}
 		std::cout << "end" << std::endl;
 		std::cout << std::endl;
-		if (d[Index(dest)] == 10000000000)
+		if (d[Index(dest)] == INFINITY)
 		{
 			std::cout << std::endl << source << "->" << dest << "=" << "No way";
 		}

@@ -10,6 +10,7 @@ int main()
 	T.Add_Vertex(2);
 	T.Add_Vertex(3);
 	T.Add_Vertex(4);
+	T.Add_Vertex(5);
 	T.Add_Edge(1, 2, 05);
 	T.Add_Edge(2, 3, 15);
 	T.Add_Edge(3, 4, 25);
