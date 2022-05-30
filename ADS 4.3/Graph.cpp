@@ -63,7 +63,7 @@ public:
 		if (Index_Source == -1 || Index_Dest == -1) throw "Edge not exist";
 		for (size_t i = 0; i < table[Index_Source].dest.size(); i++)
 		{
-			if (table[Index_Source].dest[i].dest.id_d  == Index_Dest)
+			if (table[Index_Source].dest[i].dest.id_d == Index_Dest)
 			{
 				for (size_t j = i; j < table[Index_Source].dest.size() - 1; j++)
 				{
@@ -79,7 +79,7 @@ public:
 	{
 		int Index_Source = Index(Source);
 		if (Index_Source == -1) throw "Vertex not exist";
-		for (size_t i = 0; i < table.size(); i++) 
+		for (size_t i = 0; i < table.size(); i++)
 		{
 			if (i != Index_Source)
 			{
@@ -110,7 +110,7 @@ public:
 			std::cout << table[i].data << ": {";
 			for (size_t j = 0; j < table[i].dest.size(); j++)
 			{
-				std::cout << table[i].dest[j].dest  << "(" << table[i].dest[j].edge << ")";
+				std::cout << table[i].dest[j].dest << "(" << table[i].dest[j].edge << ")";
 			}
 			std::cout << "}" << std::endl;
 		}
@@ -173,26 +173,19 @@ public:
 		{
 			ways[i].push_back(table[i].id_v + 1);
 		}
-		for (size_t i = 0; i < table.size(); i++)
+		for (size_t j = 0; j < ways[Index(dest)].size(); j++)
 		{
-			for (size_t j = 0; j < ways[i].size(); j++)
-			{
-				std::cout << ways[i][j];
-			}
-			std::cout << std::endl;
+			std::cout << ways[Index(dest)][j] << "->";
 		}
+		std::cout << "end" << std::endl;
 		std::cout << std::endl;
-		for (size_t i = 0; i < table.size(); i++)
+		if (d[Index(dest)] == 10000000000)
 		{
-			if (i != Index(source))
-			{
-				if (d[i] == 10000000000)
-				{
-					std::cout << std::endl << source << "->" << i + 1 << "=" << "No way";
-				}
-				else std::cout << std::endl << source << "->" << i + 1 << "=" << d[i];
-			}
+			std::cout << std::endl << source << "->" << dest << "=" << "No way";
 		}
+		else std::cout << std::endl << source << "->" << dest << "=" << d[Index(dest)];
+	
 	}
+
 
 };

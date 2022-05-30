@@ -21,7 +21,7 @@ int main()
 
 	std::cout << std::endl;
 	
-	T.belman_ford(1, 3);
+	T.belman_ford(1, 4);
 
 	return 0;
 }
