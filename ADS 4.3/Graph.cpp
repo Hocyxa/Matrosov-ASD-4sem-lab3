@@ -35,6 +35,10 @@ private:
 		return -1;
 	}
 public:
+	TVertex Get_Vertex(TVertex i)
+	{
+		return table[Index(i)].data;
+	}
 	void Add_Vertex(TVertex New_data)
 	{
 		if (Index(New_data) == -1)
@@ -63,7 +67,7 @@ public:
 		if (Index_Source == -1 || Index_Dest == -1) throw "Edge not exist";
 		for (size_t i = 0; i < table[Index_Source].dest.size(); i++)
 		{
-			if (table[Index_Source].dest[i].dest.id_d == Index_Dest)
+			if (table[Index_Source].dest[i].id_d == Index_Dest)
 			{
 				for (size_t j = i; j < table[Index_Source].dest.size() - 1; j++)
 				{
@@ -147,7 +151,7 @@ public:
 		t++;
 	}
 
-	void belman_ford(TVertex source, TVertex dest)
+	void Belman_Ford(TVertex source, TVertex dest)
 	{
 		if (Index(source) == -1 || Index(dest) == -1) throw "Vertexs not exist";
 		std::vector<double> d(table.size());
@@ -161,13 +165,17 @@ public:
 		{
 			for (size_t j = 0; j < table[i].dest.size(); j++)
 			{
-				if (d[i] + (double)table[i].dest[j].edge < d[table[i].dest[j].id_d])
+				if (d[i] + static_cast<double>(table[i].dest[j].edge) < d[table[i].dest[j].id_d])
 				{
-					d[table[i].dest[j].id_d] = d[i] + (double)table[i].dest[j].edge;
+					d[table[i].dest[j].id_d] = d[i] + static_cast<double>(table[i].dest[j].edge);
 					ways[table[i].dest[j].id_d] = ways[i];
 					ways[table[i].dest[j].id_d].push_back(table[i].id_v + 1);
 				}
 			}
+		}
+		if (d[Index(source)] != 0)
+		{
+			throw"ifinity cickle!!!";
 		}
 		for (size_t i = 0; i < table.size(); i++)
 		{
@@ -178,12 +186,12 @@ public:
 			std::cout << ways[Index(dest)][j] << "->";
 		}
 		std::cout << "end" << std::endl;
-		std::cout << std::endl;
+
 		if (d[Index(dest)] == INFINITY)
 		{
-			std::cout << std::endl << source << "->" << dest << "=" << "No way";
+			std::cout << source << "->" << dest << "=" << "No way";
 		}
-		else std::cout << std::endl << source << "->" << dest << "=" << d[Index(dest)];
+		else std::cout <<  source << "->" << dest << "=" << d[Index(dest)];
 	
 	}
 
